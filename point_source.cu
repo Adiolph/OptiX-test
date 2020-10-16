@@ -1,9 +1,9 @@
 #include <optix_world.h>
-#include <common.h>
-#include <helpers.h>
-#include <random.h>  // OptiX random header file in SDK/cuda/random.h
+#include "random.h"  // OptiX random header file in SDK/cuda/random.h
 
 using namespace optix;
+
+#define PI 3.1415926
 
 struct PerRayData_pathtrace
 {
@@ -26,10 +26,10 @@ RT_PROGRAM void point_source()
   prd.seed = tea<4>(launch_index, 0);
   float cos_th = 2.0 * rnd(prd.seed) - 1.0;
   float sin_th = sqrt(1 - cos_th*cos_th);
-  float cos_ph = cos(2 * pi * rnd(prd.seed));
-  float sin_ph = sin(2 * pi * rnd(prd.seed));
+  float cos_ph = cos(2 * PI * rnd(prd.seed));
+  float sin_ph = sin(2 * PI * rnd(prd.seed));
   float3 ray_direction = make_float3(cos_th*cos_ph, cos_th*sin_ph, sin_th);
-  Ray ray = make_Ray(ray_origin, ray_direction, RADIANCE_RAY_TYPE, 0.01, RT_DEFAULT_MAX);
+  Ray ray = make_Ray(ray_origin, ray_direction, 0, 0.01, RT_DEFAULT_MAX);
   rtTrace(top_object, ray, prd);
   output_id[launch_index] = prd.hitID;
 }

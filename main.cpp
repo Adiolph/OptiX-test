@@ -1,12 +1,13 @@
-#include <optix.h>
+#include <optix_world.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
 #include <sutil/sutil.h>
-#include <optixu/optixpp_namespace.h>
-#include <optixu/optixu_math_namespace.h>
+// #include <optixu/optixu_math_namespace.h>
+
+using namespace optix;
 
 int SP_NUM_X = 20;
 int SP_NUM_Y = 20;

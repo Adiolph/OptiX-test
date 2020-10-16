@@ -3,7 +3,7 @@
 using namespace optix;
 
 rtDeclareVariable(float4, sphere_coor, , );
-rtDeclareVariable(float3, hit_pos, attribute hit_pos);
+rtDeclareVariable(float3, hit_pos, attribute hit_pos, );
 rtDeclareVariable(optix::Ray, ray, rtCurrentRay, );
 
 template <bool use_robust_method>
