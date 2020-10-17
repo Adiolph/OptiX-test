@@ -6,8 +6,10 @@ LIBS = -loptix -loptixu -lsutil_sdk
 NVCC_FLAGS = -m64 -gencode arch=compute_75,code=sm_75
 
 all: $(PTX_FILES) main.cpp
-	nvcc $(NVCC_FLAGS) $(INCLUDES) -o main main.cpp $(LIB_PATH) $(LIBS) 
+	nvcc $(NVCC_FLAGS) $(INCLUDES) -o main.exe main.cpp $(LIB_PATH) $(LIBS) 
 
 $(PTX_FILES): $(CUDA_FILES)
 	nvcc $(NVCC_FLAGS) $(INCLUDES) --ptx $(CUDA_FILES)
 
+clean:
+	rm *.exe *ptx
